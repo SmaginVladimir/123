@@ -15,6 +15,9 @@ export default {
         DEFAULT: '10px',
       },
     },
+    shadow: {
+      medium: '0 0 5px 10px'
+    },
     screens: {
       sm: '640px',
       md: '768px',
@@ -26,7 +29,7 @@ export default {
         red: "#fc0404",
         darkRed: "#bb0606",
         black: "#000",
-      }
+      },
     },
   },
   plugins: [],
