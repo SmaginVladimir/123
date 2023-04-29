@@ -29,6 +29,9 @@ export default {
         red: "#fc0404",
         darkRed: "#bb0606",
         black: "#000",
+        pink: "rgba(218,78,162,0.81)",
+        blue: "#0fd9d9",
+        milk: "rgba(208, 204, 204, 1)"
       },
     },
   },

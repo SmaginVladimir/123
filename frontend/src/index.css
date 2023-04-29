@@ -3,24 +3,27 @@
 @tailwind utilities;
 
 html,
-body{
-    background: #fff;
+body {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(208, 204, 204, 1) 35%, rgba(208, 204, 204, 1) 75%, rgba(255, 255, 255, 1) 100%)
 }
 
 *::-webkit-scrollbar {
     display: none;
 }
 
-.bg-first-section {
-    background: #ffffff;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(208,204,204,1) 100%);
-}
+/*.bg-first-section {*/
+/*    background: #ffffff;*/
+/*    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(208,204,204,1) 100%);*/
+/*}*/
 
-.bg-second-section {
-    background: rgba(208,204,204,1);
-}
+/*.bg-second-section {*/
+/*    background: rgba(208,204,204,1);*/
+/*}*/
 
-.bg-third-section {
-    background: #ffffff;
-    background: linear-gradient(180deg, rgba(208,204,204,1) 0%, rgba(255,255,255,1) 100%);
-}
+/*.bg-third-section {*/
+/*    background: #ffffff;*/
+/*    background: linear-gradient(180deg, rgba(208,204,204,1) 0%, rgba(255,255,255,1) 100%);*/
+/*}*/

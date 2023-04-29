@@ -11,6 +11,8 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import {NavLink, Outlet} from "react-router-dom";
+import Logo from "../../assets/images/img.png";
+import Footer from "../Footer/Footer";
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '/', icon: ChartPieIcon },
@@ -32,13 +34,12 @@ const Layout = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <>
-
-            <header className="bg-black">
-                <nav className="mx-auto container flex items-center justify-between py-6" aria-label="Global">
+        <div className="relative">
+            <header className="bg-black fixed z-50 w-full">
+                <nav className="mx-auto container flex items-center justify-between py-4" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <NavLink to={'/'} className="-m-1.5 p-1.5 text-white">
-                            Logo
+                            <img className="object-contain max-h-[45px]" src={Logo} alt="Logo"/>
                         </NavLink>
                     </div>
                     <div className="flex lg:hidden">
@@ -67,34 +68,34 @@ const Layout = () => {
                                 leaveFrom="opacity-100 translate-y-0"
                                 leaveTo="opacity-0 translate-y-1"
                             >
-                                <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                                <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-black shadow-lg ring-1 ring-gray-900/5">
                                     <div className="p-4">
                                         {products.map((item) => (
                                             <div
                                                 key={item.name}
-                                                className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                                                className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-milk"
                                             >
-                                                <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                                                <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-black">
+                                                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-white" aria-hidden="true" />
                                                 </div>
-                                                <div className="flex-auto">
-                                                    <NavLink to={item.href} className="block font-semibold text-white">
+                                                <div className="flex-auto text-white hover:text-black">
+                                                    <NavLink to={item.href} className="block font-semibold ">
                                                         {item.name}
                                                         <span className="absolute inset-0" />
                                                     </NavLink>
-                                                    <p className="mt-1 text-gray-600">{item.description}</p>
+                                                    <p className="mt-1">{item.description}</p>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                                    <div className="grid grid-cols-2 divide-x divide-gray-900/5 hover:bg-black">
                                         {callsToAction.map((item) => (
                                             <NavLink
                                                 key={item.name}
                                                 to={item.href}
-                                                className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-gray-100"
+                                                className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 hover:bg-milk text-white hover:text-black"
                                             >
-                                                <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                                                <item.icon className="h-5 w-5 flex-none " aria-hidden="true" />
                                                 {item.name}
                                             </NavLink>
                                         ))}
@@ -121,10 +122,10 @@ const Layout = () => {
                 </nav>
                 <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                     <div className="fixed inset-0 z-10" />
-                    <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                         <div className="flex items-center justify-between">
-                            <NavLink to="/" className="-m-1.5 p-1.5 text-black">
-                                Logo
+                            <NavLink to={'/'} className="-m-1.5 p-1.5 text-white">
+                                <img className="object-contain max-h-[50px]" src={Logo} alt="Logo"/>
                             </NavLink>
                             <button
                                 type="button"
@@ -132,7 +133,7 @@ const Layout = () => {
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 <span className="sr-only">Close menu</span>
-                                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                                <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
                             </button>
                         </div>
                         <div className="mt-6 flow-root">
@@ -141,7 +142,7 @@ const Layout = () => {
                                     <Disclosure as="div" className="-mx-3">
                                         {({ open }) => (
                                             <>
-                                                <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
+                                                <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-white font-semibold leading-7 hover:bg-milk hover:text-black">
                                                     Product
                                                     <ChevronDownIcon
                                                         className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -154,7 +155,7 @@ const Layout = () => {
                                                             key={item.name}
                                                             as="a"
                                                             href={item.href}
-                                                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-white hover:bg-gray-50"
+                                                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-white hover:bg-milk hover:text-black"
                                                         >
                                                             {item.name}
                                                         </Disclosure.Button>
@@ -165,19 +166,19 @@ const Layout = () => {
                                     </Disclosure>
                                     <NavLink
                                         to="/"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-milk hover:text-black"
                                     >
                                         Features
                                     </NavLink>
                                     <NavLink
                                         to="/"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-milk hover:text-black"
                                     >
                                         Marketplace
                                     </NavLink>
                                     <NavLink
                                         to="/"
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-milk hover:text-black"
                                     >
                                         Company
                                     </NavLink>
@@ -185,7 +186,7 @@ const Layout = () => {
                                 <div className="py-6">
                                     <NavLink
                                         to="/"
-                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-milk hover:text-black"
                                     >
                                         Log in
                                     </NavLink>
@@ -194,11 +195,13 @@ const Layout = () => {
                         </div>
                     </Dialog.Panel>
                 </Dialog>
+
             </header>
             <div className="bg-site bg-no-repeat bg-cover overflow-hidden">
                 <Outlet />
             </div>
-        </>
+            <Footer />
+        </div>
     )
 };
 

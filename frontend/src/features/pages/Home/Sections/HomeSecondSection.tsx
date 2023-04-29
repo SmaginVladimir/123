@@ -1,13 +1,21 @@
-import {TypeAnimation} from 'react-type-animation';
+import {useInView} from 'react-intersection-observer';
+import CountUp from 'react-countup';
 import {motion} from 'framer-motion';
 import {NavLink} from "react-router-dom";
 import {fadeIn} from "../../../../variants";
 import DishSecond from '../../../../assets/images/dish-2.jpg';
 
 const HomeSecondSection = () => {
+
+    const [ref, inView] = useInView({
+        threshold: 0.5
+    });
+
     return (
         <section
-            className="min-h-[80vh] lg:min-h-[100vh] flex item-center py-24 bg-second-section"
+            ref={ref}
+            id="secondSection"
+            className="min-h-[95vh] lg:min-h-[90vh] flex item-center pt-[200px]"
         >
             <div className="container mx-auto">
                 <div className="flex flex-col gap-y-8 lg:flex-row lg:items-center lg:gap-x-12">
@@ -16,57 +24,47 @@ const HomeSecondSection = () => {
                         initial="hidden"
                         whileInView={'show'}
                         viewport={{once: false, amount: 0.7}}
-                        className="flex-1"
+                        className="lg:flex flex-1 rounded-3xl overflow-hidden"
                     >
-                        <img className="rounded-xl" src={DishSecond} alt="Dish"/>
+                        <img src={DishSecond} alt="Dish"/>
                     </motion.div>
                     <div className="flex-1 text-center font-secondary lg:text-left">
-                        <motion.h1
+                        <motion.h2
                             variants={fadeIn('left', 0.3)}
                             initial="hidden"
                             whileInView={'show'}
                             viewport={{once: false, amount: 0.7}}
                             className="text-[35px] font-bold leading-[0.8] lg:text-[80px] mb-8"
                         >
-                            Lorem ipsum dolor.
-                        </motion.h1>
-                        <motion.div
-                            variants={fadeIn('up', 0.4)}
-                            initial="hidden"
-                            whileInView={'show'}
-                            viewport={{once: false, amount: 0.7}}
-                            className="mb-6 text-[26px] lg:text-[55px] font-secondary
-                            font-semibold uppercase leading-[1]">
-                            {/*maximum 10 words*/}
-                            <TypeAnimation
-                                sequence={[
-                                    'One!',
-                                    3000,
-                                    'Two!',
-                                    2000,
-                                    'Three!',
-                                    2000,
-                                    'Four!',
-                                    2000,
-                                ]}
-                                speed={50}
-                                className="text-black"
-                                wrapper="span"
-                                repeat={Infinity}
-                            />
-                        </motion.div>
+                            Take care of your health with us!
+                        </motion.h2>
                         <motion.p
                             variants={fadeIn('up', 0.5)}
                             initial="hidden"
                             whileInView={'show'}
                             viewport={{once: false, amount: 0.7}}
-                            className="mb-8 max-w-lg mx-auto lg:mx-0 text-[16px] lg:text-[24px]"
+                            className="mb-8 max-w-lg mx-auto lg:mx-0 text-[16px] lg:text-[40px]"
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, adipisci distinctio
-                            eligendi ipsum maxime neque nostrum odio quia quibusdam quisquam recusandae rerum unde
-                            voluptas! Asperiores ducimus esse fuga minima, nemo provident sit suscipit. Harum minima nam
-                            nemo quia saepe unde!
+                            Make up your diet, choosing only those dishes that you like!
                         </motion.p>
+                        <motion.div
+                            variants={fadeIn('up', 0.4)}
+                            initial="hidden"
+                            whileInView={'show'}
+                            viewport={{once: false, amount: 0.7}}
+                            className="mb-8 flex gap-2 items-center justify-center lg:justify-start text-gray-700 text-[26px] lg:text-[50px] font-secondary font-semibold leading-[1]">
+                            <div className="text-center">
+                                <p>
+                                    {inView ? <CountUp start={0} end={99} duration={4}/> : null }k+&nbsp;dishes
+                                </p>
+                            </div>
+                            &#47;
+                            <div>
+                                <p>
+                                    {inView ? <CountUp start={0} end={999} duration={4}/> : null }k+&nbsp;followers
+                                </p>
+                            </div>
+                        </motion.div>
                         <motion.div
                             variants={fadeIn('up', 0.6)}
                             initial="hidden"
@@ -80,7 +78,7 @@ const HomeSecondSection = () => {
                                 shadow-sm hover:bg-black focus-visible:outline
                                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Read more
+                                Sing Up
                             </NavLink>
                         </motion.div>
                     </div>
